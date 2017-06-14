@@ -15,8 +15,17 @@
  */
 package org.greenrobot.eventbus;
 
+/**
+ * 订阅者包装类,类,方法
+ */
 final class Subscription {
+    /**
+     * 订阅者
+     */
     final Object subscriber;
+    /**
+     * 订阅的方法
+     */
     final SubscriberMethod subscriberMethod;
     /**
      * Becomes false as soon as {@link EventBus#unregister(Object)} is called, which is checked by queued event delivery
@@ -24,12 +33,21 @@ final class Subscription {
      */
     volatile boolean active;
 
+    /**
+     * @param subscriber 订阅者
+     * @param subscriberMethod 订阅的方法
+     */
     Subscription(Object subscriber, SubscriberMethod subscriberMethod) {
         this.subscriber = subscriber;
         this.subscriberMethod = subscriberMethod;
         active = true;
     }
 
+    /**
+     * 订阅者对比,类一样,方法名一样
+     * @param other
+     * @return
+     */
     @Override
     public boolean equals(Object other) {
         if (other instanceof Subscription) {
@@ -41,6 +59,10 @@ final class Subscription {
         }
     }
 
+    /**
+     * 订阅者hascode和订阅方法的hascode
+     * @return
+     */
     @Override
     public int hashCode() {
         return subscriber.hashCode() + subscriberMethod.methodString.hashCode();

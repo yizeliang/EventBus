@@ -17,6 +17,7 @@ package org.greenrobot.eventbus.meta;
 
 /**
  * Interface for generated indexes.
+ * <a href="http://greenrobot.org/eventbus/documentation/subscriber-index/" > 参考官方文档<a/>
  */
 public interface SubscriberInfoIndex {
     SubscriberInfo getSubscriberInfo(Class<?> subscriberClass);
