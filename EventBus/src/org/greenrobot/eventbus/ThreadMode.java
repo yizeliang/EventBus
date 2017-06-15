@@ -24,7 +24,7 @@ package org.greenrobot.eventbus;
  */
 public enum ThreadMode {
     /**
-     * 同一个线程
+     * 同一个线程<br/>
      * Subscriber will be called in the same thread, which is posting the event. This is the default. Event delivery
      * implies the least overhead because it avoids thread switching completely. Thus this is the recommended mode for
      * simple tasks that are known to complete is a very short time without requiring the main thread. Event handlers
@@ -33,7 +33,7 @@ public enum ThreadMode {
     POSTING,
 
     /**
-     * Android 主线程
+     * Android 主线程<br/>
      * Subscriber will be called in Android's main thread (sometimes referred to as UI thread). If the posting thread is
      * the main thread, event handler methods will be called directly. Event handlers using this mode must return
      * quickly to avoid blocking the main thread.
@@ -41,7 +41,7 @@ public enum ThreadMode {
     MAIN,
 
     /**
-     * 后台线程,如果不是主线程,那么还在当前线程执行
+     * 后台线程,如果不是主线程,那么还在当前线程执行<br/>
      * Subscriber will be called in a background thread. If posting thread is not the main thread, event handler methods
      * will be called directly in the posting thread. If the posting thread is the main thread, EventBus uses a single
      * background thread, that will deliver all its events sequentially. Event handlers using this mode should try to
@@ -50,7 +50,7 @@ public enum ThreadMode {
     BACKGROUND,
 
     /**
-     * 重新创建一个线程
+     * 重新创建一个线程<br/>
      * Event handler methods are called in a separate thread. This is always independent from the posting thread and the
      * main thread. Posting events never wait for event handler methods using this mode. Event handler methods should
      * use this mode if their execution might take some time, e.g. for network access. Avoid triggering a large number

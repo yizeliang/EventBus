@@ -16,10 +16,23 @@
 
 package org.greenrobot.eventbus;
 
+/**
+ * 执行队列
+ */
 final class PendingPostQueue {
+    /**
+     * 头
+     */
     private PendingPost head;
+    /**
+     * 尾
+     */
     private PendingPost tail;
 
+    /**
+     * 添加一个要执行的对象
+     * @param pendingPost
+     */
     synchronized void enqueue(PendingPost pendingPost) {
         if (pendingPost == null) {
             throw new NullPointerException("null cannot be enqueued");
@@ -32,9 +45,14 @@ final class PendingPostQueue {
         } else {
             throw new IllegalStateException("Head present, but no tail");
         }
+        //唤醒线程?
         notifyAll();
     }
 
+    /**
+     * 取走头结点
+     * @return
+     */
     synchronized PendingPost poll() {
         PendingPost pendingPost = head;
         if (head != null) {
@@ -46,6 +64,12 @@ final class PendingPostQueue {
         return pendingPost;
     }
 
+    /**
+     * 等待秒再执行
+     * @param maxMillisToWait
+     * @return
+     * @throws InterruptedException
+     */
     synchronized PendingPost poll(int maxMillisToWait) throws InterruptedException {
         if (head == null) {
             wait(maxMillisToWait);

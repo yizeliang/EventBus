@@ -31,7 +31,7 @@ public class SubscriberMethod {
      */
     final ThreadMode threadMode;
     /**
-     * 事件类型,其实就是Event.post(new Object.class);
+     * 事件类型,其实就是Event.post(new Object.class)的OBject.class;
      */
     final Class<?> eventType;
     /**

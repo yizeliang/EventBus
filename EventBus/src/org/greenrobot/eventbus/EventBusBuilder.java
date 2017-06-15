@@ -37,11 +37,28 @@ public class EventBusBuilder {
     boolean sendSubscriberExceptionEvent = true;
     boolean sendNoSubscriberEvent = true;
     boolean throwSubscriberException;
+
+    /**
+     * 是否考虑子类,就是一个订阅事件继承另一个订阅事件
+     */
     boolean eventInheritance = true;
+    /**
+     * EventBusAnnotationProcessor APT自动生成index,如果使用了,那么在程序初始化中就不用做任何事情;
+     * 提高了效率
+     */
     boolean ignoreGeneratedIndex;
     boolean strictMethodVerification;
+    /**
+     * 默认线程池
+     */
     ExecutorService executorService = DEFAULT_EXECUTOR_SERVICE;
+    /**
+     * 跳过方法验证?
+     */
     List<Class<?>> skipMethodVerificationForClasses;
+    /**
+     * 订阅者序列,APT自动生成
+     */
     List<SubscriberInfoIndex> subscriberInfoIndexes;
 
     EventBusBuilder() {
@@ -124,11 +141,11 @@ public class EventBusBuilder {
 
     /**
      * 不太明白
-     *
+     * <p>
      * 对于以onEvent开头的方法，方法名称的验证是为了避免拼写错误;
      * 使用此方法，您可以从此检查中排除订阅类。
      * 还禁用检查方法修饰符（public，not static或abstract）
-     *
+     * <p>
      * Method name verification is done for methods starting with onEvent to avoid typos; using this method you can
      * exclude subscriber classes from this check. Also disables checks for method modifiers (public, not static nor
      * abstract).

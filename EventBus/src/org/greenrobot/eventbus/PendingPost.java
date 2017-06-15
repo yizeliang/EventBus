@@ -18,6 +18,9 @@ package org.greenrobot.eventbus;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 要执行的对象
+ */
 final class PendingPost {
     private final static List<PendingPost> pendingPostPool = new ArrayList<PendingPost>();
 
@@ -30,6 +33,15 @@ final class PendingPost {
         this.subscription = subscription;
     }
 
+    /**
+     * 获取一个新的PendingPost;
+     * 如果有缓存,那么从缓存拿;
+     * 如果没有,重新创建一个;
+     *
+     * @param subscription
+     * @param event
+     * @return
+     */
     static PendingPost obtainPendingPost(Subscription subscription, Object event) {
         synchronized (pendingPostPool) {
             int size = pendingPostPool.size();
@@ -44,6 +56,11 @@ final class PendingPost {
         return new PendingPost(event, subscription);
     }
 
+    /**
+     * 移出一个paddingPost,将移出的对象添加到缓存中,缓存最大为1000(好大...)
+     *
+     * @param pendingPost
+     */
     static void releasePendingPost(PendingPost pendingPost) {
         pendingPost.event = null;
         pendingPost.subscription = null;

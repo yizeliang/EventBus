@@ -50,12 +50,14 @@ final class BackgroundPoster implements Runnable {
         try {
             try {
                 while (true) {
+                    //延迟1秒执行执行
                     PendingPost pendingPost = queue.poll(1000);
                     if (pendingPost == null) {
                         synchronized (this) {
                             // Check again, this time in synchronized
                             pendingPost = queue.poll();
                             if (pendingPost == null) {
+                                //如果没有消息了,方法返回
                                 executorRunning = false;
                                 return;
                             }
