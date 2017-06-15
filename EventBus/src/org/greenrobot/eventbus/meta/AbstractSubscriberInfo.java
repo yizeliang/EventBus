@@ -66,6 +66,15 @@ public abstract class AbstractSubscriberInfo implements SubscriberInfo {
         return createSubscriberMethod(methodName, eventType, threadMode, 0, false);
     }
 
+    /**
+     * 构建订阅方法pojo对象
+     * @param methodName
+     * @param eventType
+     * @param threadMode
+     * @param priority
+     * @param sticky
+     * @return
+     */
     protected SubscriberMethod createSubscriberMethod(String methodName, Class<?> eventType, ThreadMode threadMode,
                                                       int priority, boolean sticky) {
         try {

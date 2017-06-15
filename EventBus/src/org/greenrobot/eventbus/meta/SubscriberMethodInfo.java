@@ -17,6 +17,9 @@ package org.greenrobot.eventbus.meta;
 
 import org.greenrobot.eventbus.ThreadMode;
 
+/**
+ * 订阅方法pojo封装
+ */
 public class SubscriberMethodInfo {
     final String methodName;
     final ThreadMode threadMode;

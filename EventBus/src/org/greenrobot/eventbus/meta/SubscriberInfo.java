@@ -19,11 +19,27 @@ import org.greenrobot.eventbus.SubscriberMethod;
 
 /** Base class for generated index classes created by annotation processing. */
 public interface SubscriberInfo {
+    /**
+     * 获取订阅者class
+     * @return
+     */
     Class<?> getSubscriberClass();
 
+    /**
+     * 获取订阅方法
+     * @return
+     */
     SubscriberMethod[] getSubscriberMethods();
 
+    /**
+     * 获取超类订阅信息
+     * @return
+     */
     SubscriberInfo getSuperSubscriberInfo();
 
+    /**
+     * 是否检查超类
+     * @return
+     */
     boolean shouldCheckSuperclass();
 }
