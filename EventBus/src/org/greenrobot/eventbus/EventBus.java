@@ -74,6 +74,10 @@ public class EventBus {
      */
     private final Map<Class<?>, Object> stickyEvents;
 
+    /**
+     * 为每个线程提供线程状态
+     * <a href="http://blog.csdn.net/winwill2012/article/details/71625570">ThreadLocal参考<a/>
+     */
     private final ThreadLocal<PostingThreadState> currentPostingThreadState = new ThreadLocal<PostingThreadState>() {
         @Override
         protected PostingThreadState initialValue() {
@@ -273,6 +277,7 @@ public class EventBus {
 
     /**
      * post粘性事件
+     *
      * @param newSubscription
      * @param stickyEvent
      */
@@ -439,6 +444,7 @@ public class EventBus {
 
     /**
      * 事件是否有订阅者
+     *
      * @param eventClass
      * @return
      */
@@ -462,6 +468,7 @@ public class EventBus {
 
     /**
      * 处理一个事件
+     *
      * @param event
      * @param postingState
      * @throws Error
@@ -497,6 +504,7 @@ public class EventBus {
 
     /**
      * 发送一个事件,包换事件类的超类
+     *
      * @param event
      * @param postingState
      * @param eventClass
@@ -531,6 +539,7 @@ public class EventBus {
 
     /**
      * 发送事件广播
+     *
      * @param subscription
      * @param event
      * @param isMainThread
@@ -616,6 +625,7 @@ public class EventBus {
 
     /**
      * 执行一个订阅方法
+     *
      * @param subscription
      * @param event
      */
@@ -631,6 +641,7 @@ public class EventBus {
 
     /**
      * 处理订阅方法异常
+     *
      * @param subscription
      * @param event
      * @param cause
@@ -666,11 +677,17 @@ public class EventBus {
      * For ThreadLocal, much faster to set (and get multiple values).
      */
     final static class PostingThreadState {
+        //事件队列
         final List<Object> eventQueue = new ArrayList<Object>();
+        //是否正在处理事件
         boolean isPosting;
+        //是否是主线程
         boolean isMainThread;
+        //订阅者信息
         Subscription subscription;
+        //事件
         Object event;
+        //是否取消
         boolean canceled;
     }
 

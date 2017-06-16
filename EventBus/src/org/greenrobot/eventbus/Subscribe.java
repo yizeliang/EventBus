@@ -23,6 +23,9 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+/**
+ * <a href="http://www.cnblogs.com/peida/archive/2013/04/24/3036689.html">自定义注解参考<a/>
+ */
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.METHOD})
@@ -30,6 +33,7 @@ public @interface Subscribe {
     ThreadMode threadMode() default ThreadMode.POSTING;
 
     /**
+     * 是否是粘性事件,粘性事件会被缓存下来,再次发送的时候,可以从缓存池中获取该事件的实例
      * 参照:<a href="http://greenrobot.org/eventbus/documentation/configuration/sticky-events/">sticky文档<a/><br></>
      * If true, delivers the most recent sticky event (posted with
      * {@link EventBus#postSticky(Object)}) to this subscriber (if event available).

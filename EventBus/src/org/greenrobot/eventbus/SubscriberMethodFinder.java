@@ -28,7 +28,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 
 /**
- * 在行的类文件中,编译器可能添加了方法<br/>
+ * 在编译的类文件中,编译器可能添加了方法<br/>
  * 他们是桥接和合成方法<br/>
  * EventBus必须忽略他们<br/>
  * 这些方法在java文件中并不是public的<br/>
@@ -80,7 +80,7 @@ class SubscriberMethodFinder {
     private static final int POOL_SIZE = 4;
 
     /**
-     * 查找状态池?
+     * 查找封装类池
      */
     private static final FindState[] FIND_STATE_POOL = new FindState[POOL_SIZE];
 

@@ -65,7 +65,7 @@ final class PendingPostQueue {
     }
 
     /**
-     * 等待秒再执行
+     * 等待多久再执行
      * @param maxMillisToWait
      * @return
      * @throws InterruptedException

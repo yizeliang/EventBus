@@ -31,7 +31,7 @@ public class EventBusBuilder {
      * 默认线程池
      */
     private final static ExecutorService DEFAULT_EXECUTOR_SERVICE = Executors.newCachedThreadPool();
-
+    //一些异常信息的配置,忽略这些内容
     boolean logSubscriberExceptions = true;
     boolean logNoSubscriberMessages = true;
     boolean sendSubscriberExceptionEvent = true;
@@ -47,6 +47,9 @@ public class EventBusBuilder {
      * 提高了效率
      */
     boolean ignoreGeneratedIndex;
+    /**
+     * 严格的方法验证,如果使用了,方法的定义不规范会抛出异常
+     */
     boolean strictMethodVerification;
     /**
      * 默认线程池

@@ -39,7 +39,7 @@ public class SubscriberMethod {
      */
     final int priority;
     /**
-     * !!!
+     * 是不是粘性事件
      */
     final boolean sticky;
     /**
